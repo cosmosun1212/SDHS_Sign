@@ -61,11 +61,11 @@
     /* 뱃지 영역: 글자 크기 확대 및 시각적 강조 */
     .badge {
       display: inline-block;
-      background: rgba(15, 23, 42, 0.4); /* 배경을 살짝 어둡게 깔아 글씨 강조 */
+      background: rgba(15, 23, 42, 0.4);
       color: var(--badge-accent);
-      padding: 8px 18px;
+      padding: 10px 22px;
       border-radius: 24px;
-      font-size: 1.15rem; /* 기존 0.85rem에서 대폭 확대 */
+      font-size: 1.4rem;   /* 기존 1.15rem → 1.4rem */
       font-weight: 800;
       backdrop-filter: blur(6px);
       margin-bottom: 16px;
@@ -91,23 +91,39 @@
     /* 배너 연동 영역 */
     .collab-banner {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background: #fff;
-      border-bottom: 1px solid #e2e8f0;
+      align-items: center;
+      gap: 20px;
+      padding: 24px;
+      background: #f8fafc;
     }
 
     .collab-banner img {
-      height: 36px;
+      width: 150px;
+      height: 70px;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo-sdh {
+      width: 160px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .logo-maple {
+      width: 160px;
+      height: 60px;
       object-fit: contain;
     }
 
     .x-icon {
       color: #94a3b8;
-      font-weight: 800;
-      font-size: 1.1rem;
+      font-weight: 2000;
+      font-size: 50px;
     }
 
     /* 폼 영역 */
@@ -194,9 +210,9 @@
     </div>
 
     <div class="collab-banner">
-      <img src="./logo_sdh.png" alt="서울디지텍고등학교">
-      <div class="x-icon">X</div>
-      <img src="./logo_maple.png" alt="메이플스토리 월드">
+        <img src="./logo_sdh.png" class="logo-sdh" alt="서울디지텍고등학교">
+        <div class="x-icon">×</div>
+        <img src="./logo_maple.png" class="logo-maple" alt="메이플스토리 월드">
     </div>
 
     <div class="form-container">
