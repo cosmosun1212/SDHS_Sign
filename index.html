@@ -11,7 +11,7 @@
     :root {
       --primary-color: #2563eb; 
       --maple-color: #f97316;   
-      --badge-accent: #fbbf24;  /* 뱃지 글씨용 포인트 컬러 (밝은 골드/옐로우) */
+      --badge-accent: #fbbf24;
       --bg-color: #f1f5f9;
       --card-bg: #ffffff;
       --text-main: #1e293b;
@@ -37,7 +37,6 @@
       flex-direction: column;
     }
 
-    /* 상단 헤더 영역 */
     .header {
       background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
       color: white;
@@ -58,14 +57,13 @@
       opacity: 0.5;
     }
 
-    /* 뱃지 영역: 글자 크기 확대 및 시각적 강조 */
     .badge {
       display: inline-block;
       background: rgba(15, 23, 42, 0.4);
       color: var(--badge-accent);
       padding: 10px 22px;
       border-radius: 24px;
-      font-size: 1.4rem;   /* 기존 1.15rem → 1.4rem */
+      font-size: 1.4rem;
       font-weight: 800;
       backdrop-filter: blur(6px);
       margin-bottom: 16px;
@@ -76,7 +74,6 @@
       letter-spacing: -0.3px;
     }
 
-    /* 메인 타이틀 */
     .header h1 {
       margin: 0;
       font-size: 1.35rem;
@@ -88,7 +85,6 @@
       word-break: keep-all;
     }
 
-    /* 배너 연동 영역 */
     .collab-banner {
       display: flex;
       justify-content: center;
@@ -108,13 +104,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
-    .logo-sdh {
-      width: 160px;
-      height: 60px;
-      object-fit: contain;
-    }
-
-    .logo-maple {
+    .logo-sdh, .logo-maple {
       width: 160px;
       height: 60px;
       object-fit: contain;
@@ -122,11 +112,10 @@
 
     .x-icon {
       color: #94a3b8;
-      font-weight: 2000;
-      font-size: 50px;
+      font-weight: 800;
+      font-size: 32px;
     }
 
-    /* 폼 영역 */
     .form-container {
       padding: 24px;
       flex: 1;
@@ -210,9 +199,9 @@
     </div>
 
     <div class="collab-banner">
-        <img src="./SDHS_Logo.png" class="logo-sdh" alt="서울디지텍고등학교">
-        <div class="x-icon">×</div>
-        <img src="./maplestoryworlds_logo.png" class="logo-maple" alt="메이플스토리 월드">
+      <img src="./SDHS_Logo.png" class="logo-sdh" alt="서울디지텍고등학교">
+      <div class="x-icon">×</div>
+      <img src="./maplestoryworlds_logo.png" class="logo-maple" alt="메이플스토리 월드">
     </div>
 
     <div class="form-container">
@@ -257,6 +246,7 @@
   </div>
 
   <script>
+    // ⚠️ 아래 URL을 '새 배포'로 발급받은 실제 Apps Script 웹 앱 URL로 변경하세요!
     const GAS_URL = "YOUR_APPS_SCRIPT_WEB_APP_URL";
 
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
@@ -268,7 +258,6 @@
       btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      // 전송 데이터 (reserveTime 제거)
       const formData = {
         school: document.getElementById('school').value,
         grade: document.getElementById('grade').value,
@@ -278,10 +267,11 @@
         email: document.getElementById('email').value
       };
 
+      // CORS 우회 및 구글 서버의 JSON 우회 전송 처리 (text/plain 방식)
       fetch(GAS_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(formData)
       })
       .then(() => {
